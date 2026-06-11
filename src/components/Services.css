@@ -1,0 +1,38 @@
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.service-card {
+  text-align: center;
+  padding: var(--spacing-xl);
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  display: inline-block;
+  transition: transform var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.service-title {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.service-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
