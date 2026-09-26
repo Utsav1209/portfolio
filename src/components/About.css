@@ -1,46 +1,77 @@
-.about-content {
+.about {
+  position: relative;
+  z-index: 2;
+}
+
+.about-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-lg);
 }
 
-.about-text p {
-  margin-bottom: var(--spacing-md);
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-}
-
-.about-skills h3 {
-  margin-bottom: var(--spacing-md);
+.lead-text {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  font-weight: 300;
   color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
-.skills-grid {
+.lead-text strong {
+  font-weight: 600;
+  color: var(--accent-blue);
+}
+
+.body-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.skills-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.skills-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: 0.75rem;
 }
 
-.skill-tag {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--accent-color);
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
+.skill-pill {
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
   font-size: 0.9rem;
   font-weight: 500;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: var(--text-secondary);
   transition: all var(--transition-fast);
+  cursor: default;
 }
 
-.skill-tag:hover {
-  background: var(--gradient-primary);
-  color: white;
-  border-color: transparent;
+.skill-pill:hover {
+  background: var(--accent-blue);
+  color: #fff;
+  border-color: var(--accent-blue);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-@media (max-width: 768px) {
-  .about-content {
+@media (max-width: 1024px) {
+  .about-layout {
     grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
   }
 }

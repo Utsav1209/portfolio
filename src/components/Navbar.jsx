@@ -2,15 +2,24 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
   const toggleMobileMenu = () => {
@@ -18,11 +27,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="container navbar-container">
-        <a href="#" className="logo">Portfolio</a>
-        
-        <div className={`nav-links-wrapper ${isMobileMenuOpen ? 'open' : ''}`}>
+    <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar container">
+        <a href="#" className="logo">
+          UT<span className="logo-dot">.</span>
+        </a>
+
+        <div className={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul className="nav-links">
             <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a></li>
             <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
@@ -40,8 +51,8 @@ const Navbar = () => {
             <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}></span>
           </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
